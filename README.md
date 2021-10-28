@@ -57,18 +57,21 @@ Here is an example of usage:
 ```
 
 The arguments the widget receives are the following arguments:
+- `id` -> optional argument to set an id to the button so you can manipulate it via css/js
 - `label` -> It can be any text you want and will be used as the label for your button.
 - `class` -> The class that will be applied to the button element.
-- `callbackFunction` = The callback function to handle the token.
-	```
+- `callbackFunction` -> The callback function to handle the token.
+	```js
    function onSubmit(token) {
      document.getElementById("your-form-id").submit();
    }
 	```
+
 - `loadRecaptchaApi` -> a true/false flag (defaults to false) if you want to delegate the widget the task to load the javascript api, otherwise you will have to do it yourself in your layout like so:
 
-` <script src="https://www.google.com/recaptcha/api.js"></script>`
-
+```js
+ < script src="https://www.google.com/recaptcha/api.js"></script>
+ ```
 
 ### Validation
 

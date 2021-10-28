@@ -1,5 +1,6 @@
 <cfscript>
-	param name="args.buttonLabel" default="Label";
+	param name="args.id" default="recaptchaBtn";
+	param name="args.label" default="Label";
 	param name="args.loadRecaptchaApi" default="false";
 </cfscript>
 <cfoutput>
@@ -9,6 +10,7 @@
 	</cfif>
 
 	<button 
+		id="#args.id#"
 		class="g-recaptcha #args.class#"
 		data-sitekey="#getModuleSettings( "recaptcha" ).publicKey#" 
 		data-callback="#args.callbackFunction#"
