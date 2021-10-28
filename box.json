@@ -1,6 +1,6 @@
 {
     "name":"Recaptcha Google v3.0",
-    "version":"1.3.2",
+    "version":"1.3.3",
     "author":"Javier Quintero <jquintero@ortussolutions.com>",
     "homepage":"https://github.com/quinteroj/coldbox-recaptcha-v3",
     "documentation":"https://github.com/quinteroj/coldbox-recaptcha-v3/blob/master/README.md",
