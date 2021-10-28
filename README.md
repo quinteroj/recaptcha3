@@ -48,9 +48,10 @@ Here is an example of usage:
 	view="widget",
 	module="recaptcha",
 	args={
+		id = "button-id",
 		label = "Your Label",
 		class = "text-center",
-		callbackMethod = "onSubmit",
+		callbackFunction = "onSubmit",
 		loadRecaptchaApi = "true"
 	}
 )#
