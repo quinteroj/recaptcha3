@@ -1,0 +1,34 @@
+{
+    "name":"Recaptcha Google v3.0",
+    "version":"1.0.0",
+    "author":"Javier Quintero <jquintero@ortussolutions.com>",
+    "homepage":"https://github.com/sjdaniels/coldbox-recaptcha-module",
+    "documentation":"https://github.com/sjdaniels/coldbox-recaptcha-module/blob/master/README.md",
+    "location":"https://github.com/sjdaniels/coldbox-recaptcha-module/archive/master.zip",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/sjdaniels/coldbox-recaptcha-module.git"
+    },
+    "slug":"recaptcha3",
+    "shortDescription":"Provides viewlet for including Google's v3.0 Recaptcha, an API interface and a Validator for use with cbvalidation",
+    "type":"modules",
+    "packageDirectory":"recaptcha",
+    "keywords":[
+        "recaptcha"
+    ],
+    "dependencies":{
+        "cbvalidation":"stable"
+    },
+    "contributors":[
+        "Luis Majano <lmajano@ortussolutions.com>",
+        "Dave <dave@angrysam.com>",
+        "Sean Daniels <sdaniels@padawan.net>"
+    ],
+    "ignore":[
+        "**/.*",
+        "test-harness"
+    ],
+    "installPaths":{
+        "cbvalidation":"modules/cbvalidation/"
+    }
+}
