@@ -4,7 +4,7 @@ This module contains helpers for using Google's ReCAPTCHA API.
 
 reCAPTCHA is a free service that protects your site from spam and abuse. It uses advanced risk analysis techniques to tell humans and bots apart.
 
-reCAPTCHA v3 returns a score for each request without user friction. The score is based on interactions with your site and enables you to take an appropriate action for your site. Register reCAPTCHA v3 keys https://g.co/recaptcha/v3.
+reCAPTCHA v3 returns a score for each request without user friction. The score is based on interactions with your site and enables you to take an appropriate action for your site. Register reCAPTCHA v3 keys here: https://g.co/recaptcha/v3.
 
 ## LICENSE
 
@@ -39,23 +39,36 @@ moduleSettings = {
 
 ### Rendering Recaptcha
 
-In any form you wish to add the reCaptcha widget use the following:
+In any form you wish to add the reCaptcha widget which is a button with the invisible reCaptcha embedded.
+
+Here is an example of usage:
 
 ```html
-<div class="form-group">
 #renderview(
 	view="widget",
 	module="recaptcha",
 	args={
-		size = "normal" // normal or compact
+		label = "Your Label",
+		class = "text-center",
+		callbackMethod = "onSubmit",
+		loadRecaptchaApi = "true"
 	}
 )#
-</div>
 ```
 
-The only argument the widget receives is the `size` of the captcha:
-- `normal`
-- `compact`
+The arguments the widget receives are the following arguments:
+- `label` -> It can be any text you want and will be used as the label for your button.
+- `class` -> The class that will be applied to the button element.
+- `callbackFunction` = The callback function to handle the token.
+	```
+   function onSubmit(token) {
+     document.getElementById("your-form-id").submit();
+   }
+	```
+- `loadRecaptchaApi` -> a true/false flag (defaults to false) if you want to delegate the widget the task to load the javascript api, otherwise you will have to do it yourself in your layout like so:
+
+` <script src="https://www.google.com/recaptcha/api.js"></script>`
+
 
 ### Validation
 
