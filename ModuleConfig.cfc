@@ -1,7 +1,7 @@
 component {
 
 	// Module Properties
-	this.title 				= "recaptchav3";
+	this.title 				= "recaptcha3";
 	this.author 			= "Javier Quintero";
 	this.description 		= "Google Recaptcha Module V3";
 

@@ -1,7 +1,7 @@
 /**
  * Validates Google Recaptcha
  */
-component accessors="true" implements="cbvalidation.interfaces.IValidator" singleton {
+component accessors="true" singleton {
 
 	/**
 	 * Validator Name
