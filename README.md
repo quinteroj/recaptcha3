@@ -25,12 +25,12 @@ Just drop into your `modules` folder or use the CommandBox to install
 
 ### Settings
 
-Get an API key pair at http://www.google.com/recaptcha/admin and add the following settings to your `Coldbox.cfc` under a `recaptcha` structure within the `moduleSettings` structure:
+Get an API key pair at http://www.google.com/recaptcha/admin and add the following settings to your `Coldbox.cfc` under a `recaptcha3` structure within the `moduleSettings` structure:
 
 ```js
 moduleSettings = {
 	// recaptcha settings
-	recaptcha = {
+	recaptcha3 = {
     	secretKey 	= "Secret key",
     	publickey 	= "Site key",
 	};
