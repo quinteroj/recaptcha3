@@ -85,7 +85,7 @@ In your handler for the post of the form, or in a model object you can then use 
 ```js
 this.constraints = {
 	"body" 	: { required : true },
-	"recaptcha" : { validator: "Validator@recaptcha" }
+	"recaptcha" : { validator: "Validator@recaptcha3" }
 }
 ```
 
@@ -93,10 +93,10 @@ In the above example, your handler would just need to set the recaptcha property
 
 ### Manual Validation
 
-There also is a `RecaptchaService@recaptcha` Wirebox mapping you can use to validate manually if you prefer to not use the `cbvalidation` integration. In your handler:
+There also is a `RecaptchaService@recaptcha3` Wirebox mapping you can use to validate manually if you prefer to not use the `cbvalidation` integration. In your handler:
 
 ```js
-var recaptchaOK = getInstance( "RecaptchaService@recaptcha" ).isValid( rc[ "g-recaptcha-response" ] );
+var recaptchaOK = getInstance( "RecaptchaService@recaptcha3" ).isValid( rc[ "g-recaptcha-response" ] );
 
 if ( !recaptchaOK ){
     writeOutput( "Prove you have a soul!" );

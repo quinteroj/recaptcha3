@@ -11,13 +11,13 @@ component accessors="true" singleton {
 	/**
 	 * Recaptcha Service
 	 */
-    property name="recaptchaService" inject="RecaptchaService@recaptcha";
+    property name="recaptchaService" inject="RecaptchaService@recaptcha3";
 
 	/**
 	 * Constructor
 	 */
-    IValidator function init(){
-        variables.name = "Recaptcha";
+    Validator function init(){
+        variables.name = "Recaptcha3";
         return this;
     }
 
