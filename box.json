@@ -1,18 +1,18 @@
 {
     "name":"Recaptcha Google v3.0",
-    "version":"1.3.3",
+    "version":"2.0.0",
     "author":"Javier Quintero <jquintero@ortussolutions.com>",
-    "homepage":"https://github.com/quinteroj/coldbox-recaptcha-v3",
-    "documentation":"https://github.com/quinteroj/coldbox-recaptcha-v3/blob/master/README.md",
-    "location":"https://github.com/quinteroj/coldbox-recaptcha-v3/archive/refs/heads/master.zip",
+    "homepage":"https://github.com/quinteroj/recaptcha3",
+    "documentation":"https://github.com/quinteroj/recaptcha3/blob/master/README.md",
+    "location":"https://github.com/quinteroj/recaptcha3/archive/refs/heads/master.zip",
     "repository":{
         "type":"git",
-        "URL":"https://github.com/quinteroj/coldbox-recaptcha-v3"
+        "URL":"https://github.com/quinteroj/recaptcha3"
     },
     "slug":"recaptcha3",
     "shortDescription":"The Invisible reCAPTCHA. It provides a viewlet to add it to any form, the API interface and a Validator for use with cbvalidation",
     "type":"modules",
-    "packageDirectory":"recaptcha",
+    "packageDirectory":"recaptcha3",
     "keywords":[
         "recaptcha"
     ],
