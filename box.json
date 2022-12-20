@@ -1,6 +1,6 @@
 {
     "name":"Recaptcha Google v3.0",
-    "version":"2.3.0",
+    "version":"2.4.1",
     "author":"Javier Quintero <jquintero@ortussolutions.com>",
     "homepage":"https://github.com/quinteroj/recaptcha3",
     "documentation":"https://github.com/quinteroj/recaptcha3/blob/master/README.md",

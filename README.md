@@ -46,7 +46,7 @@ Here is an example of usage:
 ```html
 #renderview(
 	view="widget",
-	module="recaptcha",
+	module="recaptcha3",
 	args={
 		id = "button-id",
 		label = "Your Label",
