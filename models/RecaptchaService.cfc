@@ -17,6 +17,11 @@ component singleton accessors="true"{
 	property name="publicKey" 	default="";
 
 	/**
+	* Minimum score
+        */
+	property name="score"		default="";
+
+	/**
 	 * Constructor
 	 *
 	 * @secretKey The google secret key
@@ -36,6 +41,7 @@ component singleton accessors="true"{
 	function onDIComplete(){
 		variables.secretKey = variables.config.secretKey;
 		variables.publicKey = variables.config.publicKey;
+		variables.score     = variables.config.score;
 	}
 
 	/**
@@ -49,7 +55,7 @@ component singleton accessors="true"{
 
 		var check = deserializeJSON( result.filecontent );
 
-		return check.success;
+		return ( check.score >= variables.score );
 	}
 
 	/**
