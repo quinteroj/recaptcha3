@@ -33,7 +33,7 @@ moduleSettings = {
 	recaptcha3 = {
     	secretKey 	= "Secret key",
     	publickey 	= "Site key",
-    	score       = "Minimum score (0 to 1)",
+    	score       = 0.5, // "Minimum score (0 to 1)"
 	};
 }
 ```

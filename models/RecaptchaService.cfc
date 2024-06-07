@@ -1,102 +1,96 @@
 /**
  * This CFC allows you to connect to the reCaptcha service for rendering and validation
  */
-component singleton accessors="true"{
+component singleton accessors="true" {
 
-	// DI
-	property name="config" inject="coldbox:modulesettings:recaptcha3";
+    // DI
+    property name="config" inject="coldbox:modulesettings:recaptcha3";
 
-	/**
-	* Google Secret Key
-	*/
-	property name="secretKey" 	default="";
+    /**
+     * Google Secret Key
+     */
+    property name="secretKey" default="";
 
-	/**
-	* Google Public Key
-	*/
-	property name="publicKey" 	default="";
+    /**
+     * Google Public Key
+     */
+    property name="publicKey" default="";
 
-	/**
-	* Minimum score
-        */
-	property name="score"		default="";
+    /**
+     * Minimum score
+     */
+    property name="score" default="";
 
-	/**
-	 * Constructor
-	 *
-	 * @secretKey The google secret key
-	 * @publicKey The google public key
-	 */
-	RecaptchaService function init( secretKey="", publicKey="" ){
+    /**
+     * Constructor
+     *
+     * @secretKey The google secret key
+     * @publicKey The google public key
+     */
+    RecaptchaService function init(secretKey = '', publicKey = '') {
+        variables.secretKey = arguments.secretKey;
+        variables.publicKey = arguments.publicKey;
 
-		variables.secretKey = arguments.secretKey;
-		variables.publicKey = arguments.publicKey;
+        return this;
+    }
 
-		return this;
-	}
+    /**
+     * Execute after DI completes
+     */
+    function onDIComplete() {
+        variables.secretKey = variables.config.secretKey;
+        variables.publicKey = variables.config.publicKey;
+        variables.score = variables.config.score;
+    }
 
-	/**
-	 * Execute after DI completes
-	 */
-	function onDIComplete(){
-		variables.secretKey = variables.config.secretKey;
-		variables.publicKey = variables.config.publicKey;
-		variables.score     = variables.config.score;
-	}
+    /**
+     * Validate the captcha
+     *
+     * @response The Response from the form
+     * @remoteIP The remote IP
+     */
+    boolean function isValid(string response, string remoteIP = getRemoteIp()) {
+        var result = httpSend(response, remoteIp);
 
-	/**
-	 * Validate the captcha
-	 *
-	 * @response The Response from the form
-	 * @remoteIP The remote IP
-	 */
-	boolean function isValid( string response, string remoteIP=getRemoteIp() ){
-		var result = httpSend( response, remoteIp );
+        var check = deserializeJSON(result.filecontent);
 
-		var check = deserializeJSON( result.filecontent );
+        return (check.score >= variables.score);
+    }
 
-		return ( check.score >= variables.score );
-	}
+    /**
+     * Send the HTTP request
+     *
+     * @response The Response from the form
+     * @remoteIP The remote IP
+     */
+    struct function httpSend(required string response, string remoteIP) {
+        var httpService = new http(method = 'post', url = config.apiUrl, timeout = 10);
 
-	/**
-	 * Send the HTTP request
-	 *
-	 * @response The Response from the form
-	 * @remoteIP The remote IP
-	 */
-	struct function httpSend( required string response, string remoteIP ){
+        httpService.addParam(type = 'header', name = 'Content-Type', value = 'application/x-www-form-urlencoded');
+        httpService.addParam(type = 'formfield', name = 'response', value = '#arguments.response#');
+        httpService.addParam(type = 'formfield', name = 'remoteip', value = '#arguments.remoteIp#');
+        httpService.addParam(type = 'formfield', name = 'secret', value = '#getSecretKey()#');
 
-		var httpService = new http(
-			method  = "post",
-			url 	= config.apiUrl,
-			timeout = 10
-		);
+        return httpService.send().getPrefix();
+    }
 
-	    httpService.addParam( type="header",    name="Content-Type", value="application/x-www-form-urlencoded");
-	    httpService.addParam( type="formfield", name="response", 	 value="#arguments.response#");
-	    httpService.addParam( type="formfield", name="remoteip",  	 value="#arguments.remoteIp#");
-	    httpService.addParam( type="formfield", name="secret",		 value="#getSecretKey()#");
+    /*********************************** PRIVATE ***********************************/
 
-		return httpService.send().getPrefix();
-	}
+    /**
+     * Get Real IP, by looking at clustered, proxy headers and locally.
+     */
+    private function getRemoteIp() {
+        var headers = getHTTPRequestData().headers;
 
-	/*********************************** PRIVATE ***********************************/
+        // Very balanced headers
+        if (structKeyExists(headers, 'x-cluster-client-ip')) {
+            return headers['x-cluster-client-ip'];
+        }
+        if (structKeyExists(headers, 'X-Forwarded-For')) {
+            return headers['X-Forwarded-For'];
+        }
 
-	/**
-	* Get Real IP, by looking at clustered, proxy headers and locally.
-	*/
-	private function getRemoteIp(){
-		var headers = GetHttpRequestData().headers;
-
-		// Very balanced headers
-		if( structKeyExists( headers, 'x-cluster-client-ip' ) ){
-			return headers[ 'x-cluster-client-ip' ];
-		}
-		if( structKeyExists( headers, 'X-Forwarded-For' ) ){
-			return headers[ 'X-Forwarded-For' ];
-		}
-
-		return len( cgi.remote_addr ) ? cgi.remote_addr : '127.0.0.1';
-	}
+        return len(cgi.remote_addr) ? cgi.remote_addr : '127.0.0.1';
+    }
 
 }

@@ -12,8 +12,12 @@
 
 * Widget update
 * Add more args to customize the button
-* New loadRecaptchaApi flag to load the javascript api in the widget or not.
+* New loadRecaptchaApi flag to load the javascript api in the widget or not
 
 ## v2.0.0
 
-* Rename module package to be `recaptcha3` to keep consistency.
+* Rename module package to be `recaptcha3` to keep consistency
+
+## v3.0.0
+
+* Add score to the module settings and validate it against the google response
