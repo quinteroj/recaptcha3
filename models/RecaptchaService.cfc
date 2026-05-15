@@ -54,7 +54,7 @@ component singleton accessors="true" {
 
         var check = deserializeJSON(result.filecontent);
 
-        return (check.score >= variables.score);
+        return (check.success && structKeyExists(check, "score") && check.score >= variables.score);
     }
 
     /**
